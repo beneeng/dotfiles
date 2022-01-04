@@ -10,7 +10,6 @@ setup_mac(){
 
 setup_ubuntu(){
     sudo apt-get install vim fzf direnv curl
-    $(brew --prefix)/opt/fzf/install
 }
 
 
@@ -38,9 +37,9 @@ config checkout
 config config --local status.showUntrackedFiles no
 
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
         setup_ubuntu
-elif [[ "$OSTYPE" = "darwin"* ]]; then
+elif [[ "$OSTYPE" = "darwin" ]]; then
         setup_mac
 fi
 
