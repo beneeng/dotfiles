@@ -1,14 +1,14 @@
 #!/bin/sh
 
 
-function setup_mac(){
+setup_mac(){
     brew install vim
     brew install fzf
     $(brew --prefix)/opt/fzf/install
     brew install direnv
 }
 
-function setup_ubuntu(){
+setup_ubuntu(){
     sudo apt-get install vim fzf direnv
     $(brew --prefix)/opt/fzf/install
 }
