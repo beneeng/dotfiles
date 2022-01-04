@@ -18,7 +18,10 @@ setup_ubuntu(){
 CONFIG_FOLDER="$HOME/.cfg/"
 GIT_REPO="git@github.com:beneeng/dotfiles.git"
 
-command -v git &> /dev/null || { echo "install git first"; exit 1 }
+if command -v git &> /dev/null; then
+       echo "install git first"
+       exit 1 
+fi
 
 alias config='git --git-dir=$CONFIG_FOLDER --work-tree=$HOME'
 
