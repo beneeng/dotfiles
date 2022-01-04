@@ -38,9 +38,9 @@ config checkout
 config config --local status.showUntrackedFiles no
 
 
-if [ "$OSTYPE" -eq "linux-gnu" ]; then
+if [ "$OSTYPE" = "linux-gnu" ]; then
         setup_ubuntu
-elif [ "$OSTYPE" -eq "darwin" ]; then
+elif [ "$OSTYPE" = "darwin" ]; then
         setup_mac
 fi
 
