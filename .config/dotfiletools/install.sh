@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 setup_mac(){
@@ -38,9 +38,9 @@ config checkout
 config config --local status.showUntrackedFiles no
 
 
-if [ "$OSTYPE" = "linux-gnu" ]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         setup_ubuntu
-elif [ "$OSTYPE" = "darwin" ]; then
+elif [[ "$OSTYPE" = "darwin"* ]]; then
         setup_mac
 fi
 
