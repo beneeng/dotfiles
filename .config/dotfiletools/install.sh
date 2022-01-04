@@ -18,7 +18,9 @@ setup_ubuntu(){
 CONFIG_FOLDER="$HOME/.cfg/"
 GIT_REPO="git@github.com:beneeng/dotfiles.git"
 
-if command -v git &> /dev/null; then
+command -v git &> /dev/null
+
+if [ "$?" -ne "0" ]; then
        echo "install git first"
        exit 1 
 fi
