@@ -42,7 +42,11 @@ elif [[ "$OSTYPE" = "darwin" ]]; then
         setup_mac
 fi
 
-export KEEP_ZSHRC='yes'
+
+git --git-dir=$CONFIG_FOLDER --work-tree=$HOME submodule init
+vim +PluginInstall +qall
+
+export KEEP_ZSHRC="yes"
 # install oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
