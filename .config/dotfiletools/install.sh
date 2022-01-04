@@ -24,17 +24,16 @@ if [ "$?" -ne "0" ]; then
        exit 1 
 fi
 
-alias config='git --git-dir=$CONFIG_FOLDER --work-tree=$HOME'
 
 [ -z $(grep "^.cfg$" .gitignore 2>/dev/null) ] && echo ".cfg" >> .gitignore
 
 git clone --bare $GIT_REPO $CONFIG_FOLDER
 
 #checkout config
-config checkout
+git --git-dir=$CONFIG_FOLDER --work-tree=$HOME checkout
 
 # remove untracked files in home directory from `config status`
-config config --local status.showUntrackedFiles no
+git --git-dir=$CONFIG_FOLDER --work-tree=$HOME config --local status.showUntrackedFiles no
 
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
