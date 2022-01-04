@@ -43,7 +43,7 @@ elif [[ "$OSTYPE" = "darwin" ]]; then
 fi
 
 
-git --git-dir=$CONFIG_FOLDER --work-tree=$HOME submodule init
+git --git-dir=$CONFIG_FOLDER --work-tree=$HOME submodule update --init
 vim +PluginInstall +qall
 
 export KEEP_ZSHRC="yes"
