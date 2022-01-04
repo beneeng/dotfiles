@@ -16,7 +16,7 @@ setup_ubuntu(){
 
 
 CONFIG_FOLDER="$HOME/.cfg/"
-GIT_REPO="git@github.com:beneeng/dotfiles.git"
+GIT_REPO="https://github.com/beneeng/dotfiles.git"
 
 command -v git &> /dev/null
 
