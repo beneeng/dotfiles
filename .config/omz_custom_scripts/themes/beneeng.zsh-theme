@@ -125,7 +125,7 @@ prompt_context() {
   if [[ -z "$SSH_CLIENT" ]]; then
    prompt_segment black default "\ue712"
   else
-    prompt_segment black yellow "\uf817"
+    prompt_segment black yellow "\uf817 %{%F{default}%}%n@%m"
   fi
 }
 
