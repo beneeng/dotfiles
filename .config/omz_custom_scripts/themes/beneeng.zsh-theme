@@ -33,6 +33,7 @@
 # A few utility functions to make it easy and re-usable to draw segmented prompts
 
 CURRENT_BG='NONE'
+PROMPT_STARTED=false
 
 case ${SOLARIZED_THEME:-dark} in
     light) CURRENT_FG='white';;
@@ -118,8 +119,13 @@ prompt_end() {
 
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
-  if [[ "$USERNAME" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)%n@%m"
+  #if [[ "$USERNAME" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+  #  prompt_segment black default "%(!.%{%F{yellow}%}.)%n@%m"
+  #fi
+  if [[ -z "$SSH_CLIENT" ]]; then
+   prompt_segment black default "\ue712"
+  else
+    prompt_segment black yellow "\uf817"
   fi
 }
 
@@ -256,6 +262,8 @@ prompt_status() {
   [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
 
+  prompt_start black
+
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
@@ -284,6 +292,16 @@ prompt_aws() {
     *-prod|*production*) prompt_segment red yellow  "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
     *) prompt_segment green black "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
   esac
+}
+
+prompt_start(){
+  
+  if [[ $PROMPT_STARTED == true ]]; then
+    return
+  fi
+  PROMPT_STARTED=true
+  echo -n "%{%k%F{$1}%}\ue0b6"
+
 }
 
 ## Main prompt
